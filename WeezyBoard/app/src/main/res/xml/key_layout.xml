@@ -7,10 +7,23 @@
 
     <Row>
         <Key
-            android:codes="65"
-            android:keyEdgeFlags="left"
-            android:keyLabel="You were trouble when you walked in."
-            android:keyWidth="100%p"/>
+            android:codes="0"
+            android:keyLabel="Pushed a nun in a wheelchair, call that Virgin Mobile."/>
+    </Row>
+    <Row>
+        <Key
+            android:codes="1"
+            android:keyLabel="Hit Dora with a pan, call that Pandora."/>
+    </Row>
+    <Row>
+        <Key
+            android:codes="2"
+            android:keyLabel="Eating Subway while I tweet, I'll call that a subtweet."/>
+    </Row>
+    <Row>
+        <Key
+            android:codes="3"
+            android:keyLabel="Shoot you on Halloween, call it trigger treating."/>
     </Row>
 
 </Keyboard>

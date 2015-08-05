@@ -3,6 +3,7 @@ package com.main.weezyboard;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputConnection;
 
@@ -59,9 +60,9 @@ public class KeyInput extends InputMethodService implements KeyboardView.OnKeybo
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
+        Log.e("hai", Integer.toString(lyrics.size()));
         InputConnection ic = getCurrentInputConnection();
-        char code = (char) primaryCode;
-        ic.commitText("hello", 1);
+        ic.commitText(lyrics.get(primaryCode), 1);
     }
 
     @Override
