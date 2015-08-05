@@ -3,6 +3,14 @@ package com.main.weezyboard;
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
 import android.inputmethodservice.KeyboardView;
+import android.view.View;
+import android.view.inputmethod.InputConnection;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Rohan Jadvani on 7/14/15.
@@ -11,6 +19,33 @@ public class KeyInput extends InputMethodService implements KeyboardView.OnKeybo
 
     private KeyboardView kv;
     private Keyboard keyboard;
+    private List<String> lyrics;
+
+    private void loadLyrics() {
+        String lyric;
+        String path = "lyrics.txt";
+        lyrics = new ArrayList<String>();
+        // read file and load lyrics
+        try {
+            InputStream is = getAssets().open(path);
+            BufferedReader in = new BufferedReader(new InputStreamReader(is));
+            while ((lyric = in.readLine()) != null) {
+                lyrics.add(lyric);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public View onCreateInputView() {
+        loadLyrics();
+        kv = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard, null);
+        keyboard = new Keyboard(this, R.xml.key_layout);
+        kv.setKeyboard(keyboard);
+        kv.setOnKeyboardActionListener(this);
+        return kv;
+    }
 
     @Override
     public void onPress(int primaryCode) {
@@ -24,7 +59,9 @@ public class KeyInput extends InputMethodService implements KeyboardView.OnKeybo
 
     @Override
     public void onKey(int primaryCode, int[] keyCodes) {
-
+        InputConnection ic = getCurrentInputConnection();
+        char code = (char) primaryCode;
+        ic.commitText("hello", 1);
     }
 
     @Override

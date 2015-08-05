@@ -1,0 +1,16 @@
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+          android:keyWidth="100%p"
+          android:horizontalGap="0px"
+          android:verticalGap="0px"
+          android:keyHeight="60dp"
+    >
+
+    <Row>
+        <Key
+            android:codes="65"
+            android:keyEdgeFlags="left"
+            android:keyLabel="You were trouble when you walked in."
+            android:keyWidth="100%p"/>
+    </Row>
+
+</Keyboard>
